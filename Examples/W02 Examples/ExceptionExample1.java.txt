@@ -1,0 +1,16 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+public class ExceptionExample1 {
+
+	public static void main(String[] args) {
+		
+		try {
+			PrintWriter writer = new PrintWriter("test.txt");
+			writer.println("hello world");
+			writer.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Couldn't create file: " + e.getMessage());
+		}
+	}
+}

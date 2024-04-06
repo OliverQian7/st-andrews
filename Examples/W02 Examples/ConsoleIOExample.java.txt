@@ -1,0 +1,16 @@
+import java.io.*;
+
+public class ConsoleIOExample {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Enter your name:");
+		String name = reader.readLine();
+		System.out.println("Enter your age:");
+		String age_as_string = reader.readLine();
+		int age = Integer.parseInt(age_as_string);
+		int age_in_2000 = age - 20; // Should really check the current date.
+		System.out.println("So, " + name + ", you were about " + age_in_2000 + " in 2000."); 
+		
+	}
+}

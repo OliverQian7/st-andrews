@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<foo>
+<bar/>
+<thing>Stuff</thing>
+<junk name="2"/>
+<stuff><thing>More Stuff</thing></stuff>
+</foo>

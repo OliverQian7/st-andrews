@@ -1,0 +1,107 @@
+CS1003 - Classes and methods for Class Test 1
+
+
+Java Collections (java.util.*)
+
+Set (HashSet, TreeSet)
+add(Class object)  –  void
+contains(Class object)  –  boolean
+addAll(Set set)  –  void
+removeAll(Set set)  –  void
+size()  –  int
+entrySet()  –  Set
+values()  –  Set
+List (ArrayList, LinkedList)
+add(Class object)  –  void
+Collections.reverse()  –  void
+Collections.sort(List list)  –  void
+size()  –  int
+Map (HashMap, TreeMap)
+put(Class object, Class object)  –  void
+Collections.sort(List list, Comparator comparator)  –  void
+get(Class object)  –  Class object (returns value associated to passed key)
+forEach((Class object, Class object) -> {Instructions})  –  void
+containsKey(Class object)  –  boolean
+getKey()  –  Class object
+getValue()  –  Class object
+
+Additional methods:
+hashCode()  –  int
+equals(Class object)  –  boolean
+
+
+Java IO (java.io.*)
+
+BufferedReader (FileReader, InputStreamReader)
+readLine()  –  void
+close()
+PrintWriter
+println()  –  void
+File
+exists()  –  boolean
+canRead()  –  boolean
+canWrite() - boolean
+canExecute() - boolean
+isDirectory()  –  boolean
+mkdir()  –  void
+listFiles()  –  File[]
+getName()  –  String
+getAbsolutePath() - String
+getParent() - String
+lastModified() - long
+hashCode() - int
+setExecutable(boolean), setWritable(boolean), setReadable(boolean)
+renameTo(File) - String
+
+
+Java Exceptions
+
+Exception (ArrayIndexOutOfBoundsException, FileNotFoundException, IOException)
+getMessage()  –  String
+printStackTrace()  –  void
+
+
+Java Files (java.nio.file.Files)
+
+Static methods
+Files.readAllLines(Path filePath)
+
+
+Java Paths (java.nio.file.Paths)
+
+Methods
+Paths.get(String fileName)
+
+
+
+Additional methods
+
+Integer.parseInt(Class object)  –  int
+Double.parseDouble(Class object)  – double 
+System.getProperty(“user.dir”)  –  String (returns path of current working directory)
+
+
+
+Syntax recall practice
+
+Map<String, Integer> map = new HashMap<>();
+List<String> list = new ArrayList<>():
+Set<String> set = new TreeSet<>();
+BufferedReader reader = new BufferedReader(new FileReader(“test.txt”));
+PrintWriter writer = new PrintWriter(“test-copy.txt”);
+map.forEach((name, age) -> {System.out.println(“Name: “ + name + “ — Age: “ + age);});
+File file = new File(“my-new-file.txt”);
+if (file.exists() && file.canRead()) {
+	reader.readLine();
+}
+else System.out.println(“The file “ + file.getName() + “ does not exist…”);
+BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
+System.out.println(“What is your name? : “);
+String name = inputReader.readLine();
+System.out.println(“Nice to meet you, “ + name);
+try { //something 
+} catch (IOException e) {
+	System.out.println(e.getMessage());
+	e.printStackTrace();
+}
+

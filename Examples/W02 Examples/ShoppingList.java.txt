@@ -1,0 +1,56 @@
+import java.io.*;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class ShoppingList {
+
+    public static final String SHOPPING_LIST_FILENAME = "shopping_list.txt";
+    private Set<String> shopping_list = new TreeSet<>();
+
+    public ShoppingList() throws IOException {
+        File f = new File(SHOPPING_LIST_FILENAME);
+        if( f.exists() ) {
+            initialiseShoppingList();
+        }
+    }
+
+    private void initialiseShoppingList() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(SHOPPING_LIST_FILENAME));
+
+        String next_item;
+        do {
+            next_item = reader.readLine();
+            add(next_item);
+        }
+        while( next_item != null );
+        reader.close();
+    }
+
+    public void save() throws FileNotFoundException {
+        PrintWriter writer = new PrintWriter(SHOPPING_LIST_FILENAME);
+        for( String item : shopping_list) {
+            writer.println(item);
+        }
+        writer.close();
+    }
+
+    public void add( String item ) {
+        if( item != null ) {
+            shopping_list.add(item);
+        }
+    }
+
+    private void show() {
+        System.out.println( "My shopping list:" );
+        for( String item : shopping_list) {
+            System.out.println( item );
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        ShoppingList l = new ShoppingList();
+        l.add("Champagne");
+        l.show();
+        l.save();
+    }
+}

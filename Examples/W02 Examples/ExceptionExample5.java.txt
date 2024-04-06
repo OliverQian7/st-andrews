@@ -1,0 +1,15 @@
+public class ExceptionExample5 {
+
+	public static void main(String[] args) throws AccountOverdrawnException {
+		
+		int amount = getAccountBalance("Jane Smith");
+		
+		if (amount < 0) {
+			throw new AccountOverdrawnException();
+		}
+	}
+
+	private static int getAccountBalance(String customer) {
+		return -10;
+	}
+}

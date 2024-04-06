@@ -1,0 +1,28 @@
+import java.io.File;
+
+public class Ls {
+    public static void main(String[] args) {
+        if( args.length != 1 ) {
+            System.out.println( "ls: please supply directory path name as parameter");
+        } else {
+            String directory_name = args[0];
+            File dir_file = new File(directory_name);
+            if( ! dir_file.isDirectory() ) {
+                System.out.println( "File: " + directory_name + " is not a directory" );
+            } else {
+                System.out.println( "ls of " + directory_name );
+                listDirectory( dir_file );
+            }
+        }
+    }
+
+    private static void listDirectory(File directory) {
+        for( File a_file : directory.listFiles() ) {
+            if(a_file.isFile()) {
+                System.out.println( "File: " + a_file.getName() + " " + a_file.length() + " r: "  + a_file.canRead() + " w: " + a_file.canWrite() + " x: " + a_file.canExecute() );
+            } else if(a_file.isDirectory() ) {
+                System.out.println( "Dir: " + a_file.getName() );
+            }
+        }
+    }
+}

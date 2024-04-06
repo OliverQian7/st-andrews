@@ -1,0 +1,24 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class ExceptionExample4 {
+
+	public static void main(String[] args) {
+		try ( BufferedReader reader = new BufferedReader(new FileReader("input.txt")); 
+			  PrintWriter writer = new PrintWriter("output.txt"); ) {
+			String line = "";
+			while ((line = reader.readLine()) != null) {
+				writer.println(line);
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found: " + e.getMessage());
+		} catch (IOException e) {
+			System.out.println("IO Exception: " + e.getMessage());
+		} 
+	}
+}
+

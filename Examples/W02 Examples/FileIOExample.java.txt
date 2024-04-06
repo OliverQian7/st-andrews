@@ -1,0 +1,16 @@
+import java.io.*;
+
+public class FileIOExample {
+
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+
+        PrintWriter writer = new PrintWriter("test.txt");
+        writer.println("hello world");
+        writer.close();
+
+        BufferedReader reader = new BufferedReader(new FileReader("test.txt"));
+        String contents = reader.readLine();
+
+        System.out.println("file contents: " + contents);
+    }
+}

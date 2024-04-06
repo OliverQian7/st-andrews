@@ -1,0 +1,19 @@
+import java.util.*;
+
+public class Collections {
+    public static void main(String[] args) {
+
+        Set<String> students = new HashSet<>();
+        students.add("Bob");
+        students.add("Jane");
+        students.add("Jack");
+
+        for (String name : students) {
+            System.out.println(name);
+        }
+
+        System.out.println(students.size());
+
+    }
+}
+

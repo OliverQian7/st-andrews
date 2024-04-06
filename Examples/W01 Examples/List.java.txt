@@ -1,0 +1,19 @@
+import java.util.*;
+
+public class Collections {
+    public static void main(String[] args) {
+
+        List<String> students = new ArrayList<>();
+        students.add("Bob");
+        students.add("Jane");
+        students.add("Jack");
+
+        for (String name : students) {
+            System.out.println(name);
+        }
+
+        System.out.println(students.size());
+
+    }
+}
+

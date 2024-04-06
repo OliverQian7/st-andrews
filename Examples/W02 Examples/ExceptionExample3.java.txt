@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class ExceptionExample3 {
+
+	public static void main(String[] args) {
+		BufferedReader reader = null;
+		PrintWriter writer = null;
+		try {
+			reader = new BufferedReader(new FileReader("input.txt"));
+			writer = new PrintWriter("output.txt");
+			String line = "";
+			while ((line = reader.readLine()) != null) {
+				writer.println(line);
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found: " + e.getMessage());
+		} catch (IOException e) {
+			System.out.println("IO Exception: " + e.getMessage());
+		} finally {
+			if (writer != null) writer.close();
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					System.out.println("Couldn't close reader: " + e.getMessage());
+				}
+			}
+		}
+	}
+}
+

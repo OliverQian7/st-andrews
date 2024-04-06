@@ -1,0 +1,43 @@
+/**
+ * This example shows how a thrown exception is passed back to the calling method, and
+ * to the method that called that one, and so on until a catch clause is found or the main
+ * method is reached.
+ * 
+ * Here getId() throws an exception since it is given an unknown customer name. The exception
+ * is passed back to the calling method, getAccountBalanceByName(). Since that method doesn't
+ * handle the exception, the exception is passed further back to the previous calling method,
+ * main(). Here a catch clause is found and so the exception is handled.
+ * 
+ * @author Graham Kirby (graham.kirby@st-andrews.ac.uk)
+ */
+public class ExceptionExample6 {
+
+	public static void main(String[] args) {
+		
+		try {
+			int amount = getAccountBalanceByName("John Mcleod");
+		}
+		catch (UnknownCustomerException e) {
+			System.out.println("Couldn't find id for customer");
+		}
+	}
+
+	private static int getAccountBalanceByName(String customer_name) throws UnknownCustomerException {
+		
+		int id = getId(customer_name);
+		return getAccountBalanceById(id);
+	}
+	
+	private static int getId(String customer_name) throws UnknownCustomerException {
+		
+		// In a real implementation this would look up the name in an array, database etc.
+		if (customer_name.equals("Jane Smith")) return 32576;
+		else throw new UnknownCustomerException();
+	}
+
+	private static int getAccountBalanceById(int customer_id) throws UnknownCustomerException {
+		
+		// In a real implementation this would look up the balance in an array, database etc.
+		return -10;
+	}
+}
