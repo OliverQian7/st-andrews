@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CS1002 Class Test 2</title>
+    <style>
+        body {
+	color: #243f60;
+}
+
+p, div, li {
+	margin: 10pt 0;
+}
+
+p.indent {
+	margin-left: 5%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 10pt 0 0.0001pt;
+	border: none;
+	padding: 3pt;
+	text-transform: uppercase;
+}
+
+h2 {
+	background: #4F81BD;
+	color: white;
+	letter-spacing: .75pt;
+}
+
+h3 {
+	background: #DBE5F1;
+	letter-spacing: .75pt;
+}
+
+h4 {
+	color: #243F60;
+	letter-spacing: .75pt;
+}
+
+h3, h4, h5, h6 {
+	color: #365F91;
+	letter-spacing: .5pt;
+}
+
+header div {
+	margin: auto;
+	border: none;
+	padding: 5pt;
+	position: relative;
+	text-transform: uppercase;
+	background: #00529B;
+	color: white;
+	letter-spacing: .75pt;
+	display: grid;
+	justify-items: center;
+	align-content: center;
+	grid-template-columns: 42px auto;
+}
+
+header a {
+	margin: 0pt 10pt;
+	border: none;
+	padding: 3pt;
+	text-transform: uppercase;
+	font-size: 3em;
+	text-decoration: none;
+	color: white;
+}
+
+mark {
+	padding-left: 2pt;
+	margin-right: 2pt;
+}
+
+code {
+	font-weight: bold;
+	font-size: 120%;
+	color: #bd0505;
+    text-transform: none;
+}
+
+.comment {
+	color: green;
+}
+
+code.console {
+    color: black;
+}
+
+span.comment {
+	padding-left: 1em;
+}
+
+footer {
+    border-top: thin solid black;
+	padding-top: 6pt;
+	margin-top: 10pt;
+	padding-bottom: 10pt;
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+}
+
+author, x-author {
+	text-align: left;
+}
+
+module, x-module {
+
+	text-align: center;
+}
+
+copyright, x-copyright {
+	text-align: right;
+}
+
+x-todo {
+	background: red;
+	font-weight: bolder;
+	color: white;
+	border: thick solid darkred;
+	padding: 5px; 
+}
+
+.info {
+	border-top: thin solid #4F81BD;
+	padding: 16pt;
+	border-bottom: thin solid #4F81BD;
+	font-weight: bold;
+}
+
+blockquote {
+	border-top: thin solid #4F81BD;
+    padding: 16pt;
+	border-bottom: thin solid #4F81BD;
+}
+
+.figures {
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+}
+
+.math {
+	font-style: italic;
+}
+
+.math sup{
+	font-style: normal;
+}
+
+.hint::before {
+	content: "Hint: ";
+	font-weight:bold;
+}
+
+figure {
+	text-align: center;
+	margin: 1em;
+	vertical-align: top;
+}
+
+figure img {
+	max-width: 100%; 
+	/*border: medium solid #243f60;*/
+}
+
+
+/* numbering from https://www.sqlpac.com/en/documents/html-css-auto-numbering-elements-counters.html */
+.numbered    { counter-reset: h2counter; }
+.numbered h2 { counter-reset: h3counter; }
+.numbered h3 { counter-reset: h4counter; }
+
+.numbered h2::before {
+    counter-increment: h2counter;
+    content: counter(h2counter) " ";
+}
+
+.numbered h3::before {
+    counter-increment: h3counter;
+    content: counter(h2counter) "." counter(h3counter) " ";
+}
+
+.numbered h4::before {
+    counter-increment: h4counter;
+    content: counter(h2counter) "." counter(h3counter) "." counter(h4counter) " ";
+}
+
+/* tutorial question numbering */
+body { 
+	counter-reset: question-counter; 
+}
+ol.questions>li { 
+	counter-increment: question-counter;
+}
+ol.questions>li::marker {
+	content: counter(question-counter) ". ";
+}
+
+/* tutorial question staff guidance */
+.staff-guidance {
+	padding: 0px 10px;
+	border: thin solid #8B1233;
+	background: #FEF4F7;
+	color: #450919;
+	display: block;
+}
+
+.warning {
+	padding: 10px 10px;
+	border: thick solid #8B1233;
+	background: #FEF4F7;
+	color: #450919;
+	display: block;
+}
+
+.uml-class-diagram {
+	border: thin solid black;
+	border-collapse: collapse;
+}
+
+.uml-class-diagram td, .uml-class-diagram th  {	
+	padding: 0 1ex;
+}
+
+
+.uml-class-diagram tbody tr:first-child {	
+	border-top: thin solid black;
+}
+
+.uml-class-diagram td:nth-child(2)::before {	
+	content: ": ";
+}
+
+@media print {
+    header a { font-size: 18pt; }
+	.staff-guidance { 
+		padding: 0px 10px;
+		border: thin solid #8B1233;
+	}
+	button { display: none; }
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="banner">
+            <a title="University of St Andrews home" href="https://www.st-andrews.ac.uk">
+                <img alt="University of St Andrews crest" src="v2-img_header_crest_1413.gif" />
+            </a>
+            <a title="CS1002" href="https://studres.cs.st-andrews.ac.uk/CS1002">CS1002 &mdash; Object-Oriented
+                Programming</a>
+        </div>
+        
+        <h1>CS1002 Class Test 2&mdash;Instructions</h1>
+        
+        <p><strong>Deadline</strong>: Friday 10th November 2023 at <span style="background: yellow;">11:00</span></p>
+        <p><strong>Weighting</strong>: 20% of module grade</p>
+        <p><strong>Location</strong>: John Honey Teaching Lab (JH110)</p>
+        <p><strong>MMS Slot</strong>: CS1002 Class Test 2 &gt; <span style="background: yellow;">TEST2-1000</span></p>
+        
+		<p class="info">
+            The class test will take place under exam conditions, in the John Honey lab. You cannot take this
+            test remotely. You must find a workstation, and place your student ID card face up so
+            that your ID number is clearly visible to the invigilators. You must not talk or communicate with
+            anyone else during the test. Phones, tablets and other personal electronic devices cannot be used
+            and cannot be on your desk during the test. You are not permitted to leave the test before 10:55.
+        <br><br> 
+            The test will start at 10:05. You must submit your answers before the
+            deadline (<span style="background: yellow;">11:00</span>).
+        </p>
+    </header>
+    <main>
+
+        <section>
+            <h2 id="introduction">Instructions</h2>
+
+            <h3 id="permitted-resources">Permitted Resources</h3>
+            <p>
+            	You are permitted to use VS Code (to write and run your code), Moodle (to download the
+            	specification and starter code), and MySaint/MMS (to upload your solution). You can use
+            	VS Code extensions (<strong>excluding any AI tools</strong>) if you wish, but you don't have
+            	to.
+            </p>
+            
+            <p class="warning">
+            	If you have installed any VS Code extensions you must check, before you begin the test, for
+            	any AI-related extensions, including, but not limited to, <em>IntelliCode</em>. Any such
+            	extensions must be disabled or uninstalled for the duration of the test. Failure to do so
+            	may be treated as potential academic misconduct.
+            </p>
+            
+            <p>
+            	You may access studres to refer to the CS1002 course material. You may also access your own CS
+            	network home directory to view your solutions to CS1002 exercises.
+            </p>
+            
+            <p>
+            	You are <strong>not permitted to use any other resources</strong>. If you open any other
+            	programs or windows (e.g. email, Teams, websites, etc.) you will be asked to leave and
+            	procedures for breach of Good Academic Practice will be initiated. This could result in a mark
+            	of zero for the class test, or failure of the module overall.
+            </p>
+
+            <h3 id="task">Task</h3>
+            <p>
+            	In this test, you are given some incomplete starter code (the classes <em>ClassTest2</em>,
+            	<em>Shop</em> and <em>ShoppingCentre</em>), which initially won't compile. You need to first
+            	add enough code to remove the compilation errors, and then add further code according to the
+            	instructions in the code comments. You will need to add new code to all three classes.
+            	<strong>For <em>Shop</em> and <em>ShoppingCentre</em> you will need to define additional
+            	attributes, methods and constructors where necessary</strong>.
+            </p>
+            	
+           	<p>
+           		The scenario involves storing and retrieving information about some shops (e.g. Tesco,
+           		Morrisons, Co-op etc) within a shopping centre, and for each shop, the names of some items
+           		that they sell (e.g. bread, cheese, carrots, etc). Your code should allow up to (and
+           		including) five shops to be stored, with up to (and including) five items for each shop.
+            </p>
+            
+            
+            <p>
+            	The body of the method <em>recordAndPrintShops</em> in <em>ClassTest2</em> is already
+            	provided. It reads in a series of shop names from the user, and calls a method in
+            	<em>ShoppingCentre</em> to record a shop object for each one. Then it calls another method to
+            	print out the names of the shops. You will need to define any methods that are not already
+            	present.
+            </p>
+            
+            <hr />
+
+            <p>
+            	The correct operation of <em>recordAndPrintShops</em> is tested in the
+            	<em>stacscheck</em> tests <em>test01</em> and <em>test02</em>. You may find it useful to look
+            	at the expected output for each test, which is defined in the corresponding <code>.out</code>
+            	file within the directory <em>Tests/public</em>. For example, <em>test01.in</em> and
+            	<em>test01.out</em> show that if the user types in <code>1</code> in order to select
+            	<em>recordAndPrintShops</em>, and then enters <code>Tesco</code>, <code> Fortnum &
+            	Mason</code> and <code>Morrison</code>, followed by <code>done</code>, then the output should
+            	be those three shop names in the order that they were entered.
+            </p>
+            
+            <p>
+            	At any point during the class test you can check your progress by running <em>stacscheck</em>
+            	in the terminal, within the <em>ClassTest2</em> directory:
+            </p>
+            
+            <p><code>stacscheck Tests</code></p>
+            
+            <p>
+            	It's suggested that you focus on each test in turn. In order to pass <em>test01</em> and
+            	<em>test02</em> you will need to add code to <em>Shop</em> and <em>ShoppingCentre</em>. For
+            	the other tests you need to add	code to all classes.
+            </p>
+            
+            <hr />
+            
+            <p>
+            	The <em>findItemsForShop</em> method needs to create a series of shops as in the previous method.
+            	In addition, for each shop, it needs to read a series of items from the user, and store them in
+            	the shop object. Finally, it should prompt the user for the name of a particular shop, retrieve
+            	the items sold by that shop, and print them out.
+            </p>
+            
+            <p>
+            	The <em>findShopsSellingItem</em> method should create shops and items in the same way as the
+            	previous method, and then prompt the user for the name of a particular item. It should then find
+            	all the shops that sell that item, and print out their names.
+            </p>
+            
+            <p>
+            	You can copy and paste code between the methods in <em>ClassTest2</em> if you find it
+            	helpful. If you have time left after you have got everything working, you could try to factor out
+            	any repeated code into some extra methods, to reduce the amount of code duplication.
+            </p>
+            
+            <p class="warning">
+                Each time you manage to get an additional test passing, make a copy of your current
+                <em>.java</em> files in a separate directory. Then if you are half-way through changing your
+                code when the class test ends and it doesn't currently compile, you can go back to a
+                previous version before submitting.
+            </p>
+
+            <h3 id="marking">Marking</h3>
+            <p>
+            	Your mark will be determined largely by the results of the automated checker, including both
+            	public tests available to you during the test, and private tests. Any failing tests will be
+            	investigated by a human marker to ensure appropriate partial marks are awarded. Your tutor
+            	will check the style of the code, including layout and naming conventions, which will be a
+            	small portion of the mark for this test.
+            </p>
+            
+        </section>
+
+        <section>
+            <h2 id="submission">Submission</h2>
+            <p>
+            	Submit your class test solution to MMS as a <strong>ZIP</strong> file to the <span
+            	style="background: yellow;">TEST2-1000</span> slot in <span style="background: yellow;">CS1002
+            	Class Test 2</span>. As always, you should receive an automatic email receipt, which you
+            	should keep since it proves that you uploaded the file.
+            </p>
+                   
+            <p class="warning">
+                Once you have uploaded your solution, don't forget to immediately download it again and
+                <strong>make sure that you didn't accidentally upload the starter code</strong>.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <x-author><em>Author</em>: Prof Graham Kirby</x-author>
+        <x-module><em>Module</em>: CS1002 &ndash; Class Test 2</x-module>
+        <x-copyright>© School of Computer Science, University of St Andrews</x-copyright>
+    </footer>
+
+</body>
+
+</html>
